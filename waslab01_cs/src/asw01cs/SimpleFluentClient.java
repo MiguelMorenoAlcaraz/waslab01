@@ -3,6 +3,8 @@ package asw01cs;
 
 import org.apache.http.client.fluent.Request;
 //This code uses the Fluent API
+import org.apache.http.client.fluent.Form;
+
 
 public class SimpleFluentClient {
 
@@ -11,9 +13,15 @@ public class SimpleFluentClient {
 	public final static void main(String[] args) throws Exception {
     	
     	/* Insert code for Task #4 here */
+		
     	
-    	System.out.println(Request.Get(URI).addHeader("Accept", "text/plain").execute().returnContent());
-    	
+		String id = Request.Post(URI)
+			    .bodyForm(Form.form().add("author",  "Haopeng").add("tweet_text",  "Hi,hola estoy utilizando eclipse POR SEGUNDA VEZ").build())
+			    .addHeader("Accept", "text/plain").execute().returnContent().asString();
+		System.out.println(id);
+
+		    	System.out.println(Request.Get(URI).addHeader("Accept", "text/plain").execute().returnContent());
+		    //Falta 5
     	/* Insert code for Task #5 here */
     }
 }

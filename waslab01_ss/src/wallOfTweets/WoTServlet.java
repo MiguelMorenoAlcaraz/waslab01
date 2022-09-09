@@ -51,7 +51,6 @@ public class WoTServlet extends HttpServlet {
 
 		// This method does NOTHING but redirect to the main page
 		Long tweet = null;
-		response.sendRedirect(request.getContextPath());
 		String author = request.getParameter("author");
 		String text = request.getParameter("tweet_text");
 		
@@ -61,14 +60,19 @@ public class WoTServlet extends HttpServlet {
 		catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+		
+		if (request.getHeader("Accept").equals("text/plain"))
+			response.getWriter ( ).print(tweet);
+		else
+			response.sendRedirect(request.getContextPath());
 	}
 	
 	private void printPLAINresult(Vector<Tweet> tweets, HttpServletResponse res)  throws IOException{
-		int count = 1; 
+		
 		PrintWriter out = res.getWriter();
 		for (Tweet tweet: tweets) {
-			out.println("tweet #" + count +": " +tweet.getAuthor()+ ": "+ tweet.getText()+ " "+ tweet.getDate());
-			++count;
+			out.println("tweet #" + tweet.getTwid() +": " +tweet.getAuthor()+ ": "+ tweet.getText()+ " "+ tweet.getDate());
+			
 		}
 	}
 
@@ -111,6 +115,9 @@ public class WoTServlet extends HttpServlet {
 			out.println ( "</body></html>" );
 	}
 	}
-	//3 finished
+
+	//4 finished
+
 	// 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
 }
+
