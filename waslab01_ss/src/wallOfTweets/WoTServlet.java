@@ -56,6 +56,7 @@ public class WoTServlet extends HttpServlet {
 	
 	private void printPLAINresult(Vector<Tweet> tweets) {
 		int count = 1; 
+		PrintWriter  out = res.getWriter ( );
 		for (Tweet tweet: tweets) {
 			out.println("tweet #" + count +": " +tweet.getAuthor()+ ": "+ tweet.getText()+ " "+ tweet.getDate());
 			++count;
