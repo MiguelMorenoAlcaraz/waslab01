@@ -54,7 +54,7 @@ public class WoTServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath());
 	}
 	
-	private void printPLAINresult(Vector<Tweet> tweets) {
+	private void printPLAINresult(Vector<Tweet> tweets, HttpServletResponse res) {
 		int count = 1; 
 		PrintWriter  out = res.getWriter ( );
 		for (Tweet tweet: tweets) {
@@ -65,7 +65,7 @@ public class WoTServlet extends HttpServlet {
 
 	private void printHTMLresult (Vector<Tweet> tweets, HttpServletRequest req, HttpServletResponse res) throws IOException
 	{
-		if (req.getHeader("Accept").equals("text/plain")) printPLAINresult(tweets);
+		if (req.getHeader("Accept").equals("text/plain")) printPLAINresult(tweets, res);
 		else
 		{
 			DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.FULL, currentLocale);
