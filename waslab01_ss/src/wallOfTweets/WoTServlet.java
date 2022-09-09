@@ -54,9 +54,9 @@ public class WoTServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath());
 	}
 	
-	private void printPLAINresult(Vector<Tweet> tweets) {
+	private void printPLAINresult(Vector<Tweet> tweets, HttpServletResponse res)  throws IOException{
 		int count = 1; 
-		PrintWriter  out = res.getWriter ( );
+		PrintWriter out = res.getWriter();
 		for (Tweet tweet: tweets) {
 			out.println("tweet #" + count +": " +tweet.getAuthor()+ ": "+ tweet.getText()+ " "+ tweet.getDate());
 			++count;
@@ -65,7 +65,7 @@ public class WoTServlet extends HttpServlet {
 
 	private void printHTMLresult (Vector<Tweet> tweets, HttpServletRequest req, HttpServletResponse res) throws IOException
 	{
-		if (req.getHeader("Accept").equals("text/plain")) printPLAINresult(tweets);
+		if (req.getHeader("Accept").equals("text/plain")) printPLAINresult(tweets,res);
 		else
 		{
 			DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.FULL, currentLocale);
@@ -102,4 +102,6 @@ public class WoTServlet extends HttpServlet {
 			out.println ( "</body></html>" );
 	}
 	}
+	
+	// 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
 }
