@@ -21,7 +21,7 @@ public class SimpleFluentClient {
 		System.out.println(id);
 
 		    	System.out.println(Request.Get(URI).addHeader("Accept", "text/plain").execute().returnContent());
-		    //Falta 5
+		 
     	/* Insert code for Task #5 here */
     }
 }
