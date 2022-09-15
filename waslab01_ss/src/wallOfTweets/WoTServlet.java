@@ -39,11 +39,11 @@ public class WoTServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Vector<Tweet> tweets = Database.getTweets();
-			printHTMLresult(tweets, request, response);
-			/*if (request.getHeader("Accept").equals("text/plain")) 
+			
+			if (request.getHeader("Accept").equals("text/plain")) 
 				printPLAINresult (tweets, request, response);
 			else 
-				*/
+				printHTMLresult(tweets, request, response);
 	
 		}
 
@@ -155,7 +155,7 @@ public class WoTServlet extends HttpServlet {
 	private String encriptar(String contra) {
 		MessageDigest mdigest = null;
 		try {
-			mdigest = MessageDigest.getInstance("MD5");
+			mdigest = MessageDigest.getInstance("SHA3-256");
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

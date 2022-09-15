@@ -16,16 +16,16 @@ public class SimpleFluentClient {
 		
     	
 		String id = Request.Post(URI)
-			    .bodyForm(Form.form().add("author",  "Haopeng").add("tweet_text",  "Hi,hola estoy utilizando eclipse POR SEGUNDA VEZ").build())
+			    .bodyForm(Form.form().add("author",  "Haopeng").add("tweet_text",  "Hi,hola estoy utilizando eclipse ").build())
 			    .addHeader("Accept", "text/plain").execute().returnContent().asString();
 		System.out.println(id);
 
 		    	System.out.println(Request.Get(URI).addHeader("Accept", "text/plain").execute().returnContent());
 		 
     	/* Insert code for Task #5 here */
-	   // Request.Post(URI).addHeader("Accept", "delete")
-		 //       .bodyForm(Form.form().add("id", id).build())
-		   //     .execute();
+	    Request.Post(URI).addHeader("Accept", "delete")
+		        .bodyForm(Form.form().add("id", id).build())
+		        .execute();
     }
 }
 
