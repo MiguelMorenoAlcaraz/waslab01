@@ -16,7 +16,7 @@ public class SimpleFluentClient {
 		
     	
 		String id = Request.Post(URI)
-			    .bodyForm(Form.form().add("author",  "Haopeng").add("tweet_text",  "Hi,hola estoy utilizando eclipse POR SEGUNDA VEZ").build())
+			    .bodyForm(Form.form().add("author",  "Haopeng").add("tweet_text",  "Hi,hola estoy utilizando eclipse ").build())
 			    .addHeader("Accept", "text/plain").execute().returnContent().asString();
 		System.out.println(id);
 
